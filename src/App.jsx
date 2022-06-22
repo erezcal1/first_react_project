@@ -5,6 +5,8 @@ import Navbar from "./components/navbar/navbar.component";
 import TestComponent from "./components/test.component";
 import LoginPage from "./pages/login/Login.page";
 import RegisterPage from "./pages/register/Register.page";
+import ProductPage from "./pages/products/Products.page";
+import UsersPage from "./pages/users/Users.page";
 
 function App() {
   return (
@@ -12,7 +14,9 @@ function App() {
       <Navbar></Navbar>
       <TestComponent></TestComponent>
       {/* <LoginPage></LoginPage> */}
-      <RegisterPage></RegisterPage>
+      {/* <RegisterPage></RegisterPage> */}
+      {/* <ProductPage></ProductPage> */}
+      <UsersPage></UsersPage>
     </div>
   );
 }
