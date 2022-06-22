@@ -1,3 +1,4 @@
+import CardItemComponent from "../../components/cardItem/CardItem.component";
 import "./Products.page.css";
 
 const initial_Products = [
@@ -27,25 +28,12 @@ const ProductPage = () => {
     <div className="row">
       {initial_Products.map((item, index) => {
         return (
-          <div className="col" key={new Date().getMilliseconds + index}>
-            <div className="card card-width">
-              <img
-                src={item.img}
-                className="card-img-top"
-                alt={item.title}
-              ></img>
-              <div className="card-body">
-                <h5 className="card-title">{item.title}</h5>
-                <p className="card-text">
-                  Shop for a fridge that fits your budget and needs. We have a
-                  wide range of brands and models.
-                </p>
-                <a href="#" className="btn btn-primary">
-                  Go somewhere
-                </a>
-              </div>
-            </div>
-          </div>
+          <CardItemComponent
+            key={new Date().getMilliseconds + index}
+            // img={item.img}
+            // title={item.title}
+            {...item}
+          ></CardItemComponent>
         );
       })}
     </div>

@@ -15,8 +15,8 @@ function App() {
       <TestComponent></TestComponent>
       {/* <LoginPage></LoginPage> */}
       {/* <RegisterPage></RegisterPage> */}
-      {/* <ProductPage></ProductPage> */}
-      <UsersPage></UsersPage>
+      <ProductPage></ProductPage>
+      {/* <UsersPage></UsersPage> */}
     </div>
   );
 }
