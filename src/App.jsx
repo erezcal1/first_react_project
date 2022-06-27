@@ -8,6 +8,7 @@ import RegisterPage from "./pages/register/Register.page";
 import ProductPage from "./pages/products/Products.page";
 import UsersPage from "./pages/users/Users.page";
 import AmazonFakePage from "./pages/amazonFake/amazonFake.page";
+import FirstAjaxPage from "./pages/firstAjax/firstAjaxPage.page";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       {/* <RegisterPage></RegisterPage> */}
       {/* <ProductPage></ProductPage> */}
       {/* <UsersPage></UsersPage> */}
-      <AmazonFakePage></AmazonFakePage>
+      {/* <AmazonFakePage></AmazonFakePage> */}
+      <FirstAjaxPage></FirstAjaxPage>
     </div>
   );
 }

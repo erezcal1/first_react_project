@@ -1,8 +1,4 @@
 const AmazonSingleImg = ({ src, title }) => {
-  return (
-    <div className="col">
-      <img src={src} alt={title} className="w-100" />
-    </div>
-  );
+  return <img src={src} alt={title} />;
 };
 export default AmazonSingleImg;
