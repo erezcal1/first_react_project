@@ -16,11 +16,11 @@ function App() {
       <Navbar></Navbar>
       <TestComponent></TestComponent>
       {/* <LoginPage></LoginPage> */}
-      {/* <RegisterPage></RegisterPage> */}
+      <RegisterPage></RegisterPage>
       {/* <ProductPage></ProductPage> */}
       {/* <UsersPage></UsersPage> */}
       {/* <AmazonFakePage></AmazonFakePage> */}
-      <FirstAjaxPage></FirstAjaxPage>
+      {/* <FirstAjaxPage></FirstAjaxPage> */}
     </div>
   );
 }

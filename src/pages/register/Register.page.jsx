@@ -1,20 +1,22 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
+import axios from "axios";
 
 const RegisterPage = () => {
   const [first_Name, setFirstName] = useState("");
-  const [last_Name, setLastName] = useState("");
+  // const [last_Name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm_Password, setConfirmPassword] = useState("");
+  const [isBiz, setIsBiz] = useState(false);
   const [show_Pass_Err_Msg, setShowPassErrMsg] = useState(false);
 
   const handle_FirstName_Change = (event) => {
     setFirstName(event.target.value);
   };
-  const handle_LastName_Change = (event) => {
-    setLastName(event.target.value);
-  };
+  // const handle_LastName_Change = (event) => {
+  //   setLastName(event.target.value);
+  // };
   const handle_Email_Change = (event) => {
     setEmail(event.target.value);
   };
@@ -24,6 +26,10 @@ const RegisterPage = () => {
   const handle_ConfirmPassword_Change = (event) => {
     setConfirmPassword(event.target.value);
   };
+  const handle_Checkbox_Change = (event) => {
+    console.log(event.target.checked);
+    setIsBiz(event.target.checked);
+  };
   const handle_Submit = (event) => {
     event.preventDefault();
     // if (password !== confirm_Password) {
@@ -32,6 +38,19 @@ const RegisterPage = () => {
     //   setShowPassErrMsg(false);
     // }
     setShowPassErrMsg(password !== confirm_Password);
+    if (password === confirm_Password) {
+      axios
+        .post("http://localhost:3002/api/users", {
+          name: first_Name,
+          email: email,
+          password: password,
+          biz: isBiz,
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => console.log("error form axios", err));
+    }
   };
 
   return (
@@ -48,7 +67,7 @@ const RegisterPage = () => {
           onChange={handle_FirstName_Change}
         />
       </div>
-      <div className="col-md-6">
+      {/* <div className="col-md-6">
         <label htmlFor="input_LastName" className="form-label">
           Last Name:
         </label>
@@ -59,7 +78,7 @@ const RegisterPage = () => {
           value={last_Name}
           onChange={handle_LastName_Change}
         />
-      </div>
+      </div> */}
       <div className="col-md-6">
         <label htmlFor="input_Email" className="form-label">
           Email:
@@ -112,6 +131,19 @@ const RegisterPage = () => {
           The Password and confirm Password must be the same
         </div>
       )}
+      <div className="mb-3 form-check">
+        <input
+          type="checkbox"
+          className="form-check-input"
+          id="exampleCheck1"
+          onChange={handle_Checkbox_Change}
+          checked={isBiz}
+        />
+        <label className="form-check-label" htmlFor="exampleCheck1">
+          Check me out
+        </label>
+      </div>
+
       <div className="col-12">
         <button type="submit" className="btn btn-primary">
           Sign in
