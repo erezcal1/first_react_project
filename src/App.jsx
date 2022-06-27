@@ -7,6 +7,7 @@ import LoginPage from "./pages/login/Login.page";
 import RegisterPage from "./pages/register/Register.page";
 import ProductPage from "./pages/products/Products.page";
 import UsersPage from "./pages/users/Users.page";
+import AmazonFakePage from "./pages/amazonFake/amazonFake.page";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
       {/* <LoginPage></LoginPage> */}
       {/* <RegisterPage></RegisterPage> */}
       {/* <ProductPage></ProductPage> */}
-      <UsersPage></UsersPage>
+      {/* <UsersPage></UsersPage> */}
+      <AmazonFakePage></AmazonFakePage>
     </div>
   );
 }
