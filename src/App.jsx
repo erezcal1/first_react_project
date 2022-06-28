@@ -15,8 +15,8 @@ function App() {
     <div className="container">
       <Navbar></Navbar>
       <TestComponent></TestComponent>
-      {/* <LoginPage></LoginPage> */}
-      <RegisterPage></RegisterPage>
+      <LoginPage></LoginPage>
+      {/* <RegisterPage></RegisterPage> */}
       {/* <ProductPage></ProductPage> */}
       {/* <UsersPage></UsersPage> */}
       {/* <AmazonFakePage></AmazonFakePage> */}
