@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import registerSchema from "../../validation/register.validation";
 import Joi from "joi-browser";
+import { toast } from "react-toastify";
 
 const RegisterPage = () => {
   const [first_Name, setFirstName] = useState("");
@@ -44,8 +45,23 @@ const RegisterPage = () => {
     );
     const { error } = validated_Value;
     if (error) {
-      console.log(error);
-      //invalid email or password
+      console.log(error.details);
+      for (let item of error.details) {
+        toast.error(
+          `${item.message
+            .replaceAll('"', "")
+            .replaceAll("first_Name", "First Name")}`,
+          {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
+        );
+      }
     } else {
       axios
         //can also use .post("/users")

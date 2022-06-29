@@ -24,7 +24,7 @@ const LoginPage = () => {
     if (error) {
       //invalid email or password
       //https://fkhadra.github.io/react-toastify/introduction/
-      toast.error("🦄 Wow so easy!", {
+      toast.error("🦄 Invalid Email Or Password", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
