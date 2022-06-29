@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Joi from "joi-browser";
 import loginSchema from "../../validation/login.validation";
+import { toast } from "react-toastify";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -22,6 +23,16 @@ const LoginPage = () => {
     const { error } = validated_Value;
     if (error) {
       //invalid email or password
+      //https://fkhadra.github.io/react-toastify/introduction/
+      toast.error("🦄 Wow so easy!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else {
       axios
         .post("/auth", {

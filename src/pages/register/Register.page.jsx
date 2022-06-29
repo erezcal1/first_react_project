@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import axios from "axios";
+import registerSchema from "../../validation/register.validation";
+import Joi from "joi-browser";
 
 const RegisterPage = () => {
   const [first_Name, setFirstName] = useState("");
@@ -32,13 +34,19 @@ const RegisterPage = () => {
   };
   const handle_Submit = (event) => {
     event.preventDefault();
-    // if (password !== confirm_Password) {
-    //   setShowPassErrMsg(true);
-    // } else {
-    //   setShowPassErrMsg(false);
-    // }
-    setShowPassErrMsg(password !== confirm_Password);
-    if (password === confirm_Password) {
+    if (password !== confirm_Password) {
+      setShowPassErrMsg(true);
+    }
+    const validated_Value = Joi.validate(
+      { first_Name, email, password, confirm_Password, isBiz },
+      registerSchema,
+      { abortEarly: false }
+    );
+    const { error } = validated_Value;
+    if (error) {
+      console.log(error);
+      //invalid email or password
+    } else {
       axios
         //can also use .post("/users")
         .post("http://localhost:3002/api/users", {
@@ -53,7 +61,6 @@ const RegisterPage = () => {
         .catch((err) => console.log("error form axios", err));
     }
   };
-
   return (
     <form className="row g-3" onSubmit={handle_Submit}>
       <div className="col-md-6">

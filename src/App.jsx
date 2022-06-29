@@ -9,14 +9,16 @@ import ProductPage from "./pages/products/Products.page";
 import UsersPage from "./pages/users/Users.page";
 import AmazonFakePage from "./pages/amazonFake/amazonFake.page";
 import FirstAjaxPage from "./pages/firstAjax/firstAjaxPage.page";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <div className="container">
       <Navbar></Navbar>
+      <ToastContainer></ToastContainer>
       <TestComponent></TestComponent>
-      <LoginPage></LoginPage>
-      {/* <RegisterPage></RegisterPage> */}
+      {/* <LoginPage></LoginPage> */}
+      <RegisterPage></RegisterPage>
       {/* <ProductPage></ProductPage> */}
       {/* <UsersPage></UsersPage> */}
       {/* <AmazonFakePage></AmazonFakePage> */}
