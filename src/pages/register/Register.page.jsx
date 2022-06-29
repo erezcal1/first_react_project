@@ -40,6 +40,7 @@ const RegisterPage = () => {
     setShowPassErrMsg(password !== confirm_Password);
     if (password === confirm_Password) {
       axios
+        //can also use .post("/users")
         .post("http://localhost:3002/api/users", {
           name: first_Name,
           email: email,

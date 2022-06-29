@@ -15,12 +15,13 @@ const LoginPage = () => {
   const handle_Submit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3002/api/auth", {
-        email: email,
-        password: password,
+      .post("/auth", {
+        email,
+        password,
       })
-      .then((res) => {
-        console.log(res.data);
+      .then(({ data }) => {
+        console.log(data);
+        localStorage.setItem("token", data.token);
         setShowErrMsg(false);
       })
       .catch((err) => {
