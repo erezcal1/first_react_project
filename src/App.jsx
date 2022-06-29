@@ -10,6 +10,7 @@ import UsersPage from "./pages/users/Users.page";
 import AmazonFakePage from "./pages/amazonFake/amazonFake.page";
 import FirstAjaxPage from "./pages/firstAjax/firstAjaxPage.page";
 import { ToastContainer } from "react-toastify";
+import CardsPage from "./pages/cards/cards.page";
 
 function App() {
   return (
@@ -18,11 +19,12 @@ function App() {
       <ToastContainer></ToastContainer>
       {/* <TestComponent></TestComponent> */}
       {/* <LoginPage></LoginPage> */}
-      <RegisterPage></RegisterPage>
+      {/* <RegisterPage></RegisterPage> */}
       {/* <ProductPage></ProductPage> */}
       {/* <UsersPage></UsersPage> */}
       {/* <AmazonFakePage></AmazonFakePage> */}
       {/* <FirstAjaxPage></FirstAjaxPage> */}
+      <CardsPage></CardsPage>
     </div>
   );
 }
