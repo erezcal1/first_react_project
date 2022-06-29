@@ -10,7 +10,17 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 import './index.css';
 
 //add this url before every axios call
+//if a full url is provided, it will not be added
 axios.defaults.baseURL = "http://localhost:3002/api";
+
+axios.interceptors.request.use((config)=>{
+  const token = localStorage.getItem('token');
+  if(token){
+    //if token saved in local storage, add it to the header
+    config.headers["x-auth-token"] = token;
+  }
+  return config;
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

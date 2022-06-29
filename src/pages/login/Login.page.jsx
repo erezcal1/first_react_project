@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import Joi from "joi-browser";
+import loginSchema from "../../validation/login.validation";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -14,20 +16,28 @@ const LoginPage = () => {
   };
   const handle_Submit = (event) => {
     event.preventDefault();
-    axios
-      .post("/auth", {
-        email,
-        password,
-      })
-      .then(({ data }) => {
-        console.log(data);
-        localStorage.setItem("token", data.token);
-        setShowErrMsg(false);
-      })
-      .catch((err) => {
-        setShowErrMsg(true);
-        console.log("error from axios", err);
-      });
+    const validated_Value = Joi.validate({ email, password }, loginSchema, {
+      abortEarly: false,
+    });
+    const { error } = validated_Value;
+    if (error) {
+      //invalid email or password
+    } else {
+      axios
+        .post("/auth", {
+          email,
+          password,
+        })
+        .then(({ data }) => {
+          console.log(data);
+          localStorage.setItem("token", data.token);
+          setShowErrMsg(false);
+        })
+        .catch((err) => {
+          setShowErrMsg(true);
+          console.log("error from axios", err);
+        });
+    }
   };
 
   return (
