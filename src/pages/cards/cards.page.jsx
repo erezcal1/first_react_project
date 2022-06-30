@@ -37,20 +37,15 @@ const CardsPage = () => {
     if (error) {
       console.log(error);
       for (let item of error.details) {
-        toast.error(
-          `${item.message
-            .replaceAll('"', "")
-            .replaceAll("biz_Name", "First Name")}`,
-          {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          }
-        );
+        toast.error(`${item.message.replaceAll('"', "")}`, {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     } else {
       axios
@@ -60,6 +55,7 @@ const CardsPage = () => {
           biz_Description: biz_Description,
           biz_Address: biz_Address,
           biz_Phone: biz_Phone,
+          biz_Image: biz_Image,
         })
         .then((res) => {
           console.log(res.data);

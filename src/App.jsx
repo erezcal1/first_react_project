@@ -11,6 +11,7 @@ import AmazonFakePage from "./pages/amazonFake/amazonFake.page";
 import FirstAjaxPage from "./pages/firstAjax/firstAjaxPage.page";
 import { ToastContainer } from "react-toastify";
 import CardsPage from "./pages/cards/cards.page";
+import UserCardsPage from "./pages/userCards/userCards.page";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
       {/* <UsersPage></UsersPage> */}
       {/* <AmazonFakePage></AmazonFakePage> */}
       {/* <FirstAjaxPage></FirstAjaxPage> */}
-      <CardsPage></CardsPage>
+      {/* <CardsPage></CardsPage> */}
+      <UserCardsPage></UserCardsPage>
     </div>
   );
 }
