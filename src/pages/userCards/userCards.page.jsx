@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import UserCardsComponent from "../../components/userCards/userCards.component";
-import { cloneDeep, intersection } from "lodash";
+import { cloneDeep } from "lodash";
 
 const UserCardsPage = () => {
   const [userCards, setUserCards] = useState([]);
@@ -12,6 +12,7 @@ const UserCardsPage = () => {
         console.log(res);
         let newArray = cloneDeep(userCards);
         setUserCards(newArray.filter((card) => card._id !== id));
+        console.log(newArray);
       })
       .catch((error) => console.log(error));
   };
@@ -39,10 +40,9 @@ const UserCardsPage = () => {
           }
           inArr = [
             ...inArr,
-            <div className="col">
+            <div key={res.data[i]._id} className="col">
               <UserCardsComponent
                 className="col"
-                key={res.data[i]._id}
                 card={res.data[i]}
                 onDeleteCard={onDeleteCard}
               ></UserCardsComponent>

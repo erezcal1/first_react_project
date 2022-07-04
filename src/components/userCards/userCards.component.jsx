@@ -14,7 +14,7 @@ const UserCardsComponent = ({ card, onDeleteCard }) => {
             alt={card.biz_Name}
           ></img>
           <p className="card-text">{card.biz_Address}</p>
-          <button className="card-link">Edit</button>
+          <button className="btn btn-warning">Edit</button>
           <button className="btn btn-danger" onClick={handleBtnDelete}>
             Delete
           </button>
