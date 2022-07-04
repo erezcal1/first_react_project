@@ -48,15 +48,18 @@ const CardsPage = () => {
         });
       }
     } else {
+      let dateToSend = {
+        biz_Name,
+        biz_Description,
+        biz_Address,
+        biz_Phone,
+      };
+      if (biz_Image) {
+        dateToSend.biz_Image = biz_Image;
+      }
       axios
         //can also use .post("/users")
-        .post("/cards", {
-          biz_Name: biz_Name,
-          biz_Description: biz_Description,
-          biz_Address: biz_Address,
-          biz_Phone: biz_Phone,
-          biz_Image: biz_Image,
-        })
+        .post("/cards", dateToSend)
         .then((res) => {
           console.log(res.data);
         })

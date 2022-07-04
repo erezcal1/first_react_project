@@ -91,18 +91,6 @@ const RegisterPage = () => {
           onChange={handle_FirstName_Change}
         />
       </div>
-      {/* <div className="col-md-6">
-        <label htmlFor="input_LastName" className="form-label">
-          Last Name:
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="input_LastName"
-          value={last_Name}
-          onChange={handle_LastName_Change}
-        />
-      </div> */}
       <div className="col-md-6">
         <label htmlFor="input_Email" className="form-label">
           Email:
