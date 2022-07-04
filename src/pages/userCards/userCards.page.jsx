@@ -1,12 +1,22 @@
 import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
-// import UserCardsComponent from "../../components/userCards/userCards.component";
+import UserCardsComponent from "../../components/userCards/userCards.component";
+import { cloneDeep, intersection } from "lodash";
 
 const UserCardsPage = () => {
   const [userCards, setUserCards] = useState([]);
+  const onDeleteCard = (id) => {
+    axios
+      .delete(`/cards/${id}`)
+      .then((res) => {
+        console.log(res);
+        let newArray = cloneDeep(userCards);
+        setUserCards(newArray.filter((card) => card._id !== id));
+      })
+      .catch((error) => console.log(error));
+  };
   useEffect(() => {
     handleBtnClick();
-    console.log("i fire once");
   }, []);
   const handleBtnClick = () => {
     axios
@@ -18,7 +28,7 @@ const UserCardsPage = () => {
         let inArr = [];
         let l = res.data.length;
         for (let i = 0; i < l; i++) {
-          if (i > 0 && i % 3 === 0) {
+          if (i > 0 && i % 4 === 0) {
             newArr = [
               ...newArr,
               <div className="row" key={i + "cards row"}>
@@ -29,8 +39,13 @@ const UserCardsPage = () => {
           }
           inArr = [
             ...inArr,
-            <div className="col" key={i + "cards row"}>
-              {res.data[i].biz_Name}
+            <div className="col">
+              <UserCardsComponent
+                className="col"
+                key={res.data[i]._id}
+                card={res.data[i]}
+                onDeleteCard={onDeleteCard}
+              ></UserCardsComponent>
             </div>,
           ];
         }
