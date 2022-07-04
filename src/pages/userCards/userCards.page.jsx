@@ -1,9 +1,13 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
-import UserCardsComponent from "../../components/userCards/userCards.component";
+// import UserCardsComponent from "../../components/userCards/userCards.component";
 
 const UserCardsPage = () => {
   const [userCards, setUserCards] = useState([]);
+  useEffect(() => {
+    handleBtnClick();
+    console.log("i fire once");
+  }, []);
   const handleBtnClick = () => {
     axios
       .get("/cards")

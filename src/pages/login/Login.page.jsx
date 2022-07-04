@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Joi from "joi-browser";
 import loginSchema from "../../validation/login.validation";
@@ -8,6 +8,10 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show_Err_Msg, setShowErrMsg] = useState(false);
+
+  useEffect(() => {
+    console.log(email);
+  }, [email]);
 
   const handle_Email_Change = (event) => {
     setEmail(event.target.value);
