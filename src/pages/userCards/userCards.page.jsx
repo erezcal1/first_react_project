@@ -8,7 +8,9 @@ const UserCardsPage = () => {
   const [userCards, setUserCards] = useState([]);
 
   useEffect(() => {
-    // handleBtnClick();
+    //useEffect runs once when passed an empty array
+    //it runs once because there are no changes and useEffect knows to
+    //run each time there is a change in a value that is passed in the array
     getAllCards();
   }, []);
   const onDeleteCard = (id) => {
