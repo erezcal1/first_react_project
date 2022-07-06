@@ -7,7 +7,8 @@ import EditBizCardComponent from "../../components/editBizCard/editBizCardPopup.
 
 const UserCardsPage = () => {
   const [userCards, setUserCards] = useState([]);
-  const [showEditPopUp, setShowEditPopUp] = useState(false);
+  const [dataToEdit, setDataToEdit] = useState(null);
+  // const [showEditPopUp, setShowEditPopUp] = useState(false);
 
   useEffect(() => {
     //useEffect runs once when passed an empty array
@@ -16,11 +17,14 @@ const UserCardsPage = () => {
     getAllCards();
   }, []);
 
-  const onEditCard = (card) => {
-    setShowEditPopUp(true);
+  const onEditCard = (id) => {
+    // setShowEditPopUp(true);
+    let temp = cloneDeep(userCards.find((card) => card._id === id));
+    setDataToEdit(temp);
   };
   const onCancelEdit = () => {
-    setShowEditPopUp(false);
+    // setShowEditPopUp(false);
+    setDataToEdit(null);
   };
 
   const onDeleteCard = (id) => {
@@ -116,9 +120,10 @@ const UserCardsPage = () => {
   return (
     <Fragment>
       {renderRowsFromArr(userCards)}
-      {showEditPopUp && (
+      {dataToEdit && (
         <EditBizCardComponent
           onCancelEdit={onCancelEdit}
+          {...dataToEdit}
         ></EditBizCardComponent>
       )}
     </Fragment>
