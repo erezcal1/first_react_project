@@ -25,7 +25,7 @@ const UserCardsPage = () => {
         let newArrCards = cloneDeep(userCards);
         let cardItemIndex = newArrCards.findIndex((item) => item._id === _id);
         if (cardItemIndex !== -1) {
-          newArrCards[cardItemIndex] = updatedCard;
+          newArrCards[cardItemIndex] = { ...cloneDeep(updatedCard), _id };
           setUserCards(newArrCards);
         }
         setDataToEdit(null);
