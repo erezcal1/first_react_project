@@ -56,7 +56,7 @@ const EditBizCardComponent = (props) => {
     if (biz_Image) {
       dateToSend.biz_Image = biz_Image;
     }
-    props.onEditCard(dateToSend);
+    props.onEditCard(props._id, dateToSend);
   };
   const handle_Cancel = () => {
     props.onCancelEdit();

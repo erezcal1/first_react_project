@@ -17,6 +17,24 @@ const UserCardsPage = () => {
     getAllCards();
   }, []);
 
+  const handle_Edit_Card = (_id, updatedCard) => {
+    console.log(updatedCard);
+    axios
+      .put(`/cards/${_id}`, updatedCard)
+      .then((res) => {
+        let newArrCards = cloneDeep(userCards);
+        let cardItemIndex = newArrCards.findIndex((item) => item._id === _id);
+        if (cardItemIndex !== -1) {
+          newArrCards[cardItemIndex] = updatedCard;
+          setUserCards(newArrCards);
+        }
+        setDataToEdit(null);
+      })
+      .catch((error) => {
+        toast.error(error);
+      });
+  };
+
   const onEditCard = (id) => {
     // setShowEditPopUp(true);
     let temp = cloneDeep(userCards.find((card) => card._id === id));
@@ -123,6 +141,7 @@ const UserCardsPage = () => {
       {dataToEdit && (
         <EditBizCardComponent
           onCancelEdit={onCancelEdit}
+          onEditCard={handle_Edit_Card}
           {...dataToEdit}
         ></EditBizCardComponent>
       )}
