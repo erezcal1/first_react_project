@@ -3,9 +3,11 @@ import axios from "axios";
 import UserCardsComponent from "../../components/userCards/userCards.component";
 import { cloneDeep } from "lodash";
 import { toast } from "react-toastify";
+import EditBizCardComponent from "../../components/editBizCard/editBizCardPopup.component";
 
 const UserCardsPage = () => {
   const [userCards, setUserCards] = useState([]);
+  const [showEditPopUp, setShowEditPopUp] = useState(false);
 
   useEffect(() => {
     //useEffect runs once when passed an empty array
@@ -13,6 +15,11 @@ const UserCardsPage = () => {
     //run each time there is a change in a value that is passed in the array
     getAllCards();
   }, []);
+
+  const onEditCard = (card) => {
+    setShowEditPopUp(true);
+  };
+
   const onDeleteCard = (id) => {
     //delete from server - axios.delete
     //delete from state - setUserCards
@@ -88,6 +95,7 @@ const UserCardsPage = () => {
           <UserCardsComponent
             card={arrOfCards[i]}
             onDeleteCard={onDeleteCard}
+            onEditCard={onEditCard}
           ></UserCardsComponent>
         </div>,
       ];
@@ -100,7 +108,13 @@ const UserCardsPage = () => {
         </div>,
       ];
     }
+    return newArr;
   };
-  return <Fragment>{renderRowsFromArr(userCards)}</Fragment>;
+  return (
+    <Fragment>
+      {renderRowsFromArr(userCards)}
+      {showEditPopUp && <EditBizCardComponent></EditBizCardComponent>}
+    </Fragment>
+  );
 };
 export default UserCardsPage;
