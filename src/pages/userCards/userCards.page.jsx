@@ -19,6 +19,9 @@ const UserCardsPage = () => {
   const onEditCard = (card) => {
     setShowEditPopUp(true);
   };
+  const onCancelEdit = () => {
+    setShowEditPopUp(false);
+  };
 
   const onDeleteCard = (id) => {
     //delete from server - axios.delete
@@ -113,7 +116,11 @@ const UserCardsPage = () => {
   return (
     <Fragment>
       {renderRowsFromArr(userCards)}
-      {showEditPopUp && <EditBizCardComponent></EditBizCardComponent>}
+      {showEditPopUp && (
+        <EditBizCardComponent
+          onCancelEdit={onCancelEdit}
+        ></EditBizCardComponent>
+      )}
     </Fragment>
   );
 };

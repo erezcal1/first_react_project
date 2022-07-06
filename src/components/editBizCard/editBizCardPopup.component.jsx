@@ -38,6 +38,14 @@ const EditBizCardComponent = (props) => {
   const handle_Submit = (event) => {
     event.preventDefault();
   };
+  const handleFromClick = (event) => {
+    // because we use onCLick og the div (parent)
+    // when we click on elements inside the div (child)
+    // the event will bubble up to the parent
+    // and the parent will not know about the child
+    // so we need to stop the event propagation
+    event.stopPropagation();
+  };
   const handle_Submit_Edit = () => {
     let dateToSend = {
       biz_Name,
@@ -55,7 +63,11 @@ const EditBizCardComponent = (props) => {
   };
   return (
     <div className="center-wrapper" onClick={handle_Cancel}>
-      <form onSubmit={handle_Submit} className="center-absolute">
+      <form
+        onSubmit={handle_Submit}
+        onClick={handleFromClick}
+        className="center-absolute"
+      >
         <div className="mb-3">
           <h3>Edit Card</h3>
         </div>
