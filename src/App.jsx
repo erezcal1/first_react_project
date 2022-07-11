@@ -13,6 +13,8 @@ import { ToastContainer } from "react-toastify";
 import CardsPage from "./pages/cards/cards.page";
 import UserCardsPage from "./pages/userCards/userCards.page";
 import ClassWorkPage from "./pages/classWork/classWork.page";
+import Counter from "./pages/tk_counterPage/counter.page";
+import DisplayCounter from "./pages/tk_counterPage/displayCounter.page";
 
 function App() {
   return (
@@ -20,7 +22,7 @@ function App() {
       <Navbar></Navbar>
       <ToastContainer></ToastContainer>
       {/* <TestComponent></TestComponent> */}
-      <LoginPage></LoginPage>
+      {/* <LoginPage></LoginPage> */}
       {/* <RegisterPage></RegisterPage> */}
       {/* <ProductPage></ProductPage> */}
       {/* <UsersPage></UsersPage> */}
@@ -29,6 +31,8 @@ function App() {
       {/* <CardsPage></CardsPage> */}
       {/* <UserCardsPage></UserCardsPage> */}
       {/* <ClassWorkPage></ClassWorkPage> */}
+      <Counter></Counter>
+      <DisplayCounter></DisplayCounter>
     </div>
   );
 }
