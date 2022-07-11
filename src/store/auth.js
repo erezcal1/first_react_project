@@ -1,36 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 //create vars that we want redux to store for us
-const initialAuthState ={
+const initialAuthState = {
   loggedIn: false,
-  userData:{},
-}
+  userData: {},
+};
 
 // this is a redux toolkit pattern to create the store for redux itself
 // redux toolkit also create reducers/actions to manipulate the state
 const authSlice = createSlice({
   //for redux use
-  name: "auth", 
+  name: "auth",
   //initial state
-  initialState: initialAuthState, 
+  initialState: initialAuthState,
   //functions inside the reducers are called actions
   //functions to manipulate the state
   reducers: {
     //we will call this function when we user logged in
     //to update the login state
-    login(state){
+    login(state) {
       state.loggedIn = true;
     },
     // logout to update the state
-    logout(state){
+    logout(state) {
       state.loggedIn = false;
     },
-    updateUserData(state, action){
+    updateUserData(state, action) {
       state.userData = action.payload;
-    }
-  }
-})
-//export the actions so we can use them from other 
+    },
+  },
+});
+//export the actions so we can use them from other
 //components/pages to update the state
 export const authActions = authSlice.actions;
 

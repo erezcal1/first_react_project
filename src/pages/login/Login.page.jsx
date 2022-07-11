@@ -50,11 +50,9 @@ const LoginPage = () => {
           password,
         })
         .then(({ data }) => {
-          console.log(data);
           localStorage.setItem("token", data.token);
           dispatch(authActions.login()); //update redux state
           setShowErrMsg(false);
-          console.log(jwt_decode(data.token));
           dispatch(authActions.updateUserData(jwt_decode(data.token)));
         })
         .catch((err) => {

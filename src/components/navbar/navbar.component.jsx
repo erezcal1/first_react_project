@@ -12,15 +12,20 @@ const Navbar = () => {
   //when using a tag, it will refresh the page and all the js will be reloaded
   //when using NavLink, it will not refresh the page and all the js we be saved
   // NavLink is the same as Link but only for the navbar
+  // When NavLink detects that the URL is the same as the current URL, it will add the class "active" to the link
   const showLogIn = () => {
     if (userData.email) {
       return (
         <Fragment>
           <li className="nav-item">
-            <NavLink className="nav-link">{userData.email}</NavLink>
+            <NavLink className="nav-link" to="/">
+              {userData.email}
+            </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link">Logout</NavLink>
+            <NavLink className="nav-link" to="/">
+              Logout
+            </NavLink>
           </li>
         </Fragment>
       );
@@ -67,7 +72,7 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link active" aria-current="page" to="/">
+              <NavLink className="nav-link" aria-current="page" to="/">
                 Home
               </NavLink>
             </li>
