@@ -9,6 +9,9 @@ import axios from 'axios';
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 import './index.css';
+// redux
+import { Provider } from 'react-redux';
+import store from './store/index';
 
 //toastify import
 import 'react-toastify/dist/ReactToastify.css';
@@ -31,7 +34,9 @@ axios.interceptors.request.use((config)=>{
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

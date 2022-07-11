@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 import Joi from "joi-browser";
 import loginSchema from "../../validation/login.validation";
 import { toast } from "react-toastify";
+import { authActions } from "../../store/auth";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show_Err_Msg, setShowErrMsg] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     console.log(email);
@@ -46,6 +50,7 @@ const LoginPage = () => {
         .then(({ data }) => {
           console.log(data);
           localStorage.setItem("token", data.token);
+          dispatch(authActions.login());
           setShowErrMsg(false);
         })
         .catch((err) => {

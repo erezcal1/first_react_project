@@ -1,8 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import "./navbar.component.css";
+import { useSelector } from "react-redux";
+
 const Navbar = () => {
+  const loggedIn = useSelector((state) => state.auth.loggedIn);
   return (
     //rename from class to className
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav
+      className={`navbar navbar-expand-lg navbar-light ${
+        loggedIn ? "bg-success" : "bg-danger"
+      }`}
+    >
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           Navbar
@@ -73,7 +81,7 @@ const Navbar = () => {
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" type="submit">
+            <button className="btn btn-success" type="submit">
               Search
             </button>
           </form>

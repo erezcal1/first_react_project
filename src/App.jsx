@@ -20,14 +20,14 @@ function App() {
       <Navbar></Navbar>
       <ToastContainer></ToastContainer>
       {/* <TestComponent></TestComponent> */}
-      {/* <LoginPage></LoginPage> */}
+      <LoginPage></LoginPage>
       {/* <RegisterPage></RegisterPage> */}
       {/* <ProductPage></ProductPage> */}
       {/* <UsersPage></UsersPage> */}
       {/* <AmazonFakePage></AmazonFakePage> */}
       {/* <FirstAjaxPage></FirstAjaxPage> */}
       {/* <CardsPage></CardsPage> */}
-      <UserCardsPage></UserCardsPage>
+      {/* <UserCardsPage></UserCardsPage> */}
       {/* <ClassWorkPage></ClassWorkPage> */}
     </div>
   );

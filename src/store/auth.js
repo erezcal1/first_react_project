@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 //create vars that we want redux to store for us
 const initialAuthState ={
   loggedIn: false,
-  token:"",
+  email:"",
 }
 
 // this is a redux toolkit pattern to create the store for redux itself
