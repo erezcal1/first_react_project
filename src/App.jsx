@@ -18,6 +18,7 @@ import ClassWorkPage from "./pages/classWork/classWork.page";
 import Counter from "./pages/tk_counterPage/counter.page";
 import DisplayCounter from "./pages/tk_counterPage/displayCounter.page";
 import HomePage from "./pages/homePage/homePage.page";
+import NotFoundPage from "./pages/notFoundPage/notFoundPage.page";
 
 function App() {
   return (
@@ -26,11 +27,9 @@ function App() {
       <ToastContainer></ToastContainer>
       {/* <TestComponent></TestComponent> */}
       {/* <ProductPage></ProductPage> */}
-      {/* <UsersPage></UsersPage> */}
       {/* <AmazonFakePage></AmazonFakePage> */}
       {/* <FirstAjaxPage></FirstAjaxPage> */}
       {/* <CardsPage></CardsPage> */}
-      {/* <UserCardsPage></UserCardsPage> */}
       {/* <ClassWorkPage></ClassWorkPage> */}
       {/* <Counter></Counter> */}
       {/* <DisplayCounter></DisplayCounter> */}
@@ -38,11 +37,17 @@ function App() {
         <Route path="/" exact>
           <HomePage></HomePage>
         </Route>
+        <Route path="/dashboard">
+          <UserCardsPage></UserCardsPage>
+        </Route>
         <Route path="/login">
           <LoginPage></LoginPage>
         </Route>
         <Route path="/register">
           <RegisterPage></RegisterPage>
+        </Route>
+        <Route path="*">
+          <NotFoundPage></NotFoundPage>
         </Route>
       </Switch>
     </div>
