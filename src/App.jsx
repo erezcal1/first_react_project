@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import logo from "./logo.svg";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
+
 import Navbar from "./components/navbar/navbar.component";
 import TestComponent from "./components/test.component";
 import LoginPage from "./pages/login/Login.page";
@@ -15,6 +17,7 @@ import UserCardsPage from "./pages/userCards/userCards.page";
 import ClassWorkPage from "./pages/classWork/classWork.page";
 import Counter from "./pages/tk_counterPage/counter.page";
 import DisplayCounter from "./pages/tk_counterPage/displayCounter.page";
+import HomePage from "./pages/homePage/homePage.page";
 
 function App() {
   return (
@@ -22,8 +25,6 @@ function App() {
       <Navbar></Navbar>
       <ToastContainer></ToastContainer>
       {/* <TestComponent></TestComponent> */}
-      {/* <LoginPage></LoginPage> */}
-      {/* <RegisterPage></RegisterPage> */}
       {/* <ProductPage></ProductPage> */}
       {/* <UsersPage></UsersPage> */}
       {/* <AmazonFakePage></AmazonFakePage> */}
@@ -31,8 +32,19 @@ function App() {
       {/* <CardsPage></CardsPage> */}
       {/* <UserCardsPage></UserCardsPage> */}
       {/* <ClassWorkPage></ClassWorkPage> */}
-      <Counter></Counter>
-      <DisplayCounter></DisplayCounter>
+      {/* <Counter></Counter> */}
+      {/* <DisplayCounter></DisplayCounter> */}
+      <Switch>
+        <Route path="/" exact>
+          <HomePage></HomePage>
+        </Route>
+        <Route path="/login">
+          <LoginPage></LoginPage>
+        </Route>
+        <Route path="/register">
+          <RegisterPage></RegisterPage>
+        </Route>
+      </Switch>
     </div>
   );
 }
