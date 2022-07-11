@@ -5,6 +5,8 @@ import Joi from "joi-browser";
 import loginSchema from "../../validation/login.validation";
 import { toast } from "react-toastify";
 import { authActions } from "../../store/auth";
+// https://www.npmjs.com/package/jwt-decode
+import jwt_decode from "jwt-decode";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -52,6 +54,7 @@ const LoginPage = () => {
           localStorage.setItem("token", data.token);
           dispatch(authActions.login());
           setShowErrMsg(false);
+          console.log(jwt_decode(data.token));
         })
         .catch((err) => {
           setShowErrMsg(true);
