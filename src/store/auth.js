@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 //create vars that we want redux to store for us
 const initialAuthState ={
   loggedIn: false,
-  email:"",
+  userData:{},
 }
 
 // this is a redux toolkit pattern to create the store for redux itself
@@ -24,6 +24,9 @@ const authSlice = createSlice({
     // logout to update the state
     logout(state){
       state.loggedIn = false;
+    },
+    updateUserData(state, action){
+      state.userData = action.payload;
     }
   }
 })

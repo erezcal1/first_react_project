@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const loggedIn = useSelector((state) => state.auth.loggedIn);
+  const userData = useSelector((state) => state.auth.userData);
   return (
     //rename from class to className
     <nav
@@ -71,7 +72,7 @@ const Navbar = () => {
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link disabled">Disabled</a>
+              <a className="nav-link">{userData.email}</a>
             </li>
           </ul>
           <form className="d-flex">
