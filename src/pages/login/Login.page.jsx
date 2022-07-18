@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { authActions } from "../../store/auth";
 // https://www.npmjs.com/package/jwt-decode
 import jwt_decode from "jwt-decode";
+import { useHistory } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +15,8 @@ const LoginPage = () => {
   const [show_Err_Msg, setShowErrMsg] = useState(false);
 
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   useEffect(() => {
     console.log(email);
@@ -54,6 +57,7 @@ const LoginPage = () => {
           dispatch(authActions.login()); //update redux state
           setShowErrMsg(false);
           dispatch(authActions.updateUserData(jwt_decode(data.token)));
+          history.push("/dashboard"); //navigate to another page
         })
         .catch((err) => {
           setShowErrMsg(true);

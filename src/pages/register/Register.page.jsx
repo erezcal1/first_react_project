@@ -4,6 +4,7 @@ import axios from "axios";
 import registerSchema from "../../validation/register.validation";
 import Joi from "joi-browser";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 const RegisterPage = () => {
   const [first_Name, setFirstName] = useState("");
@@ -13,6 +14,8 @@ const RegisterPage = () => {
   const [confirm_Password, setConfirmPassword] = useState("");
   const [isBiz, setIsBiz] = useState(false);
   const [show_Pass_Err_Msg, setShowPassErrMsg] = useState(false);
+
+  const history = useHistory();
 
   const handle_FirstName_Change = (event) => {
     setFirstName(event.target.value);
@@ -72,6 +75,7 @@ const RegisterPage = () => {
           biz: isBiz,
         })
         .then((res) => {
+          history.push("/login");
           console.log(res.data);
         })
         .catch((err) => console.log("error form axios", err));
