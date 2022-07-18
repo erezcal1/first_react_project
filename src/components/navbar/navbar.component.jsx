@@ -25,6 +25,16 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
+            <NavLink className="nav-link" to="/dashboard">
+              Dashboard
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink className="nav-link" to="/create-card">
+              Create Business Card
+            </NavLink>
+          </li>
+          <li className="nav-item">
             <NavLink className="nav-link" to="/logout">
               Logout
             </NavLink>
@@ -88,11 +98,6 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/dashboard">
-                Dashboard
-              </NavLink>
-            </li>
             {showLogIn()}
           </ul>
           <form className="d-flex">

@@ -21,6 +21,7 @@ import HomePage from "./pages/homePage/homePage.page";
 import NotFoundPage from "./pages/notFoundPage/notFoundPage.page";
 import LogOutPage from "./pages/logout/logout.page";
 import QueryParamsPage from "./pages/queryParames/queryParames.page";
+import AuthGuardRoute from "./components/userItem/authGuardRoute.component";
 
 function App() {
   return (
@@ -39,9 +40,10 @@ function App() {
         <Route path="/" exact>
           <HomePage></HomePage>
         </Route>
-        <Route path="/dashboard">
-          <UserCardsPage></UserCardsPage>
-        </Route>
+        <AuthGuardRoute
+          path="/dashboard"
+          component={UserCardsPage}
+        ></AuthGuardRoute>
         <Route path="/login">
           <LoginPage></LoginPage>
         </Route>
@@ -54,6 +56,10 @@ function App() {
         <Route path="/qparams">
           <QueryParamsPage></QueryParamsPage>
         </Route>
+        <AuthGuardRoute
+          path="/create-card"
+          component={CardsPage}
+        ></AuthGuardRoute>
         <Route path="*">
           <NotFoundPage></NotFoundPage>
         </Route>
