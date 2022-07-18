@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import "./navbar.component.css";
 import { useSelector } from "react-redux";
-import { Fragment } from "react";
-import { NavLink } from "react-router-dom";
+import { Fragment, useState } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 
 const Navbar = () => {
   const loggedIn = useSelector((state) => state.auth.loggedIn);
   const userData = useSelector((state) => state.auth.userData);
+  const [search, setSearch] = useState("");
+  const history = useHistory();
 
   // NavLink replace the a tag
   //when using a tag, it will refresh the page and all the js will be reloaded
@@ -45,6 +47,15 @@ const Navbar = () => {
         </Fragment>
       );
     }
+  };
+
+  const searchChange = (event) => {
+    setSearch(event.target.value);
+  };
+
+  const searchSubmit = (event) => {
+    event.preventDefault();
+    history.push(`/qparams?q=${search}`);
   };
 
   return (
@@ -90,8 +101,14 @@ const Navbar = () => {
               type="search"
               placeholder="Search"
               aria-label="Search"
+              value={search}
+              onChange={searchChange}
             />
-            <button className="btn btn-success" type="submit">
+            <button
+              className="btn btn-danger"
+              type="submit"
+              onClick={searchSubmit}
+            >
               Search
             </button>
           </form>

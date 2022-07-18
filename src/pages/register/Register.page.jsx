@@ -75,8 +75,8 @@ const RegisterPage = () => {
           biz: isBiz,
         })
         .then((res) => {
-          history.push("/login");
           console.log(res.data);
+          history.push("/login", { email: email, password: password });
         })
         .catch((err) => console.log("error form axios", err));
     }

@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { authActions } from "../../store/auth";
 // https://www.npmjs.com/package/jwt-decode
 import jwt_decode from "jwt-decode";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -17,10 +17,31 @@ const LoginPage = () => {
   const dispatch = useDispatch();
 
   const history = useHistory();
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location);
+    if (location.state && location.state.email && location.state.password) {
+      setEmail(location.state.email);
+      setPassword(location.state.password);
+    }
+  }, []);
 
   useEffect(() => {
     console.log(email);
   }, [email]);
+
+  useEffect(() => {
+    if (
+      email !== "" &&
+      password !== "" &&
+      location.state &&
+      location.state.email &&
+      location.state.password
+    ) {
+      handle_Submit();
+    }
+  }, [email, password]);
 
   const handle_Email_Change = (event) => {
     setEmail(event.target.value);
@@ -29,7 +50,9 @@ const LoginPage = () => {
     setPassword(event.target.value);
   };
   const handle_Submit = (event) => {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     const validated_Value = Joi.validate({ email, password }, loginSchema, {
       abortEarly: false,
     });

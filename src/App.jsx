@@ -20,6 +20,7 @@ import DisplayCounter from "./pages/tk_counterPage/displayCounter.page";
 import HomePage from "./pages/homePage/homePage.page";
 import NotFoundPage from "./pages/notFoundPage/notFoundPage.page";
 import LogOutPage from "./pages/logout/logout.page";
+import QueryParamsPage from "./pages/queryParames/queryParames.page";
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
         </Route>
         <Route path="/logout">
           <LogOutPage></LogOutPage>
+        </Route>
+        <Route path="/qparams">
+          <QueryParamsPage></QueryParamsPage>
         </Route>
         <Route path="*">
           <NotFoundPage></NotFoundPage>
