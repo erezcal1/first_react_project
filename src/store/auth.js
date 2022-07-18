@@ -24,6 +24,7 @@ const authSlice = createSlice({
     // logout to update the state
     logout(state) {
       state.loggedIn = false;
+      state.userData = {};
     },
     updateUserData(state, action) {
       state.userData = action.payload;

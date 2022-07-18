@@ -13,6 +13,6 @@ const LogOutPage = () => {
     history.push("/"); //navigate to home page
   }, []);
 
-  return <div></div>;
+  return <></>;
 };
 export default LogOutPage;
