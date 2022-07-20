@@ -1,6 +1,7 @@
 import { cloneDeep } from "lodash";
 import { useState } from "react";
 import CardItemComponent from "../../components/cardItem/CardItem.component";
+import "./fatherChild.css";
 
 let init_Array = [
   {
@@ -67,8 +68,7 @@ const FatherChildCom = () => {
   //   }
   // };
   return (
-    // <Fragment>{showArr(arr)}</Fragment>
-    <div className="row">
+    <div className="animals-Grid">
       {arr.map((item) => {
         return (
           <CardItemComponent

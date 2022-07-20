@@ -79,10 +79,8 @@ const UserCardsPage = () => {
       .get(`/cards`)
       .then((res) => {
         console.log(res.data);
-        if (res.data.length === 0) {
-          toast("You Have No Cards");
-        }
-        setUserCards(res.data);
+        if (res.data.length === 0) toast("You Have No Cards");
+        else setUserCards(res.data);
       })
       .catch((error) => {
         console.log("error", error);
