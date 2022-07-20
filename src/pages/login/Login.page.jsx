@@ -1,23 +1,26 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import axios from "axios";
 import Joi from "joi-browser";
 import loginSchema from "../../validation/login.validation";
 import { toast } from "react-toastify";
-import { authActions } from "../../store/auth";
+// import { authActions } from "../../store/auth";
 // https://www.npmjs.com/package/jwt-decode
-import jwt_decode from "jwt-decode";
+// import jwt_decode from "jwt-decode";
 import { useHistory, useLocation } from "react-router-dom";
+import useAfterLogin from "../../hooks/useafterLogin";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show_Err_Msg, setShowErrMsg] = useState(false);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const history = useHistory();
   const location = useLocation();
+
+  const afterLogin = useAfterLogin();
 
   useEffect(() => {
     console.log(location);
@@ -76,10 +79,12 @@ const LoginPage = () => {
           password,
         })
         .then(({ data }) => {
-          localStorage.setItem("token", data.token);
-          dispatch(authActions.login()); //update redux state
+          // localStorage.setItem("token", data.token);
+          // dispatch(authActions.login()); //update redux state
           setShowErrMsg(false);
-          dispatch(authActions.updateUserData(jwt_decode(data.token)));
+          // dispatch(authActions.updateUserData(jwt_decode(data.token)));
+          // useAfterLogin(data.token);
+          afterLogin(data.token);
           history.push("/dashboard"); //navigate to another page
         })
         .catch((err) => {

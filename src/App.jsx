@@ -2,6 +2,9 @@
 import logo from "./logo.svg";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 
 import Navbar from "./components/navbar/navbar.component";
 import TestComponent from "./components/test.component";
@@ -22,8 +25,24 @@ import NotFoundPage from "./pages/notFoundPage/notFoundPage.page";
 import LogOutPage from "./pages/logout/logout.page";
 import QueryParamsPage from "./pages/queryParames/queryParames.page";
 import AuthGuardRoute from "./components/userItem/authGuardRoute.component";
+import { authActions } from "./store/auth";
+import useAfterLogin from "./hooks/useafterLogin";
 
 function App() {
+  const dispatch = useDispatch();
+  const afterLogin = useAfterLogin();
+  useEffect(() => {
+    axios
+      .post("/auth/logInByToken")
+      .then((res) => {
+        console.log(res);
+        const token = localStorage.getItem("token");
+        afterLogin(token);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="container">
       <Navbar></Navbar>
