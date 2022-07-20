@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import logo from "./logo.svg";
 import { Route, Switch } from "react-router-dom";
@@ -27,6 +28,7 @@ import QueryParamsPage from "./pages/queryParames/queryParames.page";
 import AuthGuardRoute from "./components/userItem/authGuardRoute.component";
 import { authActions } from "./store/auth";
 import useAfterLogin from "./hooks/useafterLogin";
+import FatherChildCom from "./pages/tk_FatherCaildCom/fatherCaildCom.page";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +57,7 @@ function App() {
       {/* <ClassWorkPage></ClassWorkPage> */}
       {/* <Counter></Counter> */}
       {/* <DisplayCounter></DisplayCounter> */}
+      <FatherChildCom></FatherChildCom>
       <Switch>
         <Route path="/" exact>
           <HomePage></HomePage>

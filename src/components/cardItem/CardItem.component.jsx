@@ -7,10 +7,14 @@ const CardItemComponent = ({ img, title, id, onDeleteItem }) => {
       <div className="card border-0">
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
-          <img src={img} className="card-img-top" alt={title}></img>
-          <a href="#" className="">
-            Go somewhere
-          </a>
+          <img src={img} className="card-img-top mb-2" alt={title}></img>
+          <button
+            type="button"
+            className="btn btn-danger btn-sm"
+            onClick={handle_Button_Click}
+          >
+            Delete Me
+          </button>
         </div>
       </div>
     </div>
