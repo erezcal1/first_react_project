@@ -29,6 +29,7 @@ import AuthGuardRoute from "./components/userItem/authGuardRoute.component";
 import { authActions } from "./store/auth";
 import useAfterLogin from "./hooks/useafterLogin";
 import FatherChildCom from "./pages/tk_FatherCaildCom/fatherCaildCom.page";
+import LoginTKPage from "./pages/loginTK/loginTK.page";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ function App() {
       {/* <ClassWorkPage></ClassWorkPage> */}
       {/* <Counter></Counter> */}
       {/* <DisplayCounter></DisplayCounter> */}
-      <FatherChildCom></FatherChildCom>
+      {/* <FatherChildCom></FatherChildCom> */}
       <Switch>
         <Route path="/" exact>
           <HomePage></HomePage>
@@ -68,6 +69,9 @@ function App() {
         ></AuthGuardRoute>
         <Route path="/login">
           <LoginPage></LoginPage>
+        </Route>
+        <Route path="/tkLogin">
+          <LoginTKPage></LoginTKPage>
         </Route>
         <Route path="/register">
           <RegisterPage></RegisterPage>
