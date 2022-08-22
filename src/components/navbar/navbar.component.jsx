@@ -9,6 +9,7 @@ const Navbar = () => {
   const userData = useSelector((state) => state.auth.userData);
   const [search, setSearch] = useState("");
   const history = useHistory();
+  console.log(userData);
 
   // NavLink replace the a tag
   //when using a tag, it will refresh the page and all the js will be reloaded
@@ -41,6 +42,7 @@ const Navbar = () => {
           </li>
         </Fragment>
       );
+    } else if (userData.biz) {
     } else {
       return (
         <Fragment>
